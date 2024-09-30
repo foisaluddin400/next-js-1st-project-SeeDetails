@@ -1,11 +1,19 @@
+import getPost from "@/Components/homeApi";
 
-
-const Homepage = () => {
-    return (
+// api calling
+const Homepage = async () => {
+  const postData = await getPost();
+  return (
+    <div>
+      {postData.map((item) => (
         <div>
-            I am home page
+          <h1>{item.id}</h1>
+          <h1>{item.title}</h1>
+          <h1>{item.body}</h1>
         </div>
-    );
+      ))}
+    </div>
+  );
 };
 
 export default Homepage;
